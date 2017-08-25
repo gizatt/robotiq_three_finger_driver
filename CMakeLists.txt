@@ -1,7 +1,14 @@
 cmake_minimum_required(VERSION 2.6.0)
 
+# By default, don't install out to system.
+if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+  set(CMAKE_INSTALL_PREFIX "${CMAKE_BINARY_DIR}/install" CACHE STRING
+    "Prefix for installation of sub-packages (note: required during build!)"
+    FORCE)
+endif()
+
 # pull in the pods macros. See cmake/pods.cmake for documentation
-set(POD_NAME robotiqhand)
+set(POD_NAME robotiq_three_finger_driver)
 include(cmake/pods.cmake)
 
 # automatically build LCM types.  This also defines a number of CMake
